@@ -74,7 +74,7 @@ export default function DisplayAllBook2()
  const [Cost,setCost]=useState('')
  const [FornCost,setFornCost]=useState('')
  const [BoKKNo,setBoKKNo]=useState('')
-
+ const [bookid,setBookid]=useState('')
  const [errors,setErrors]=useState({})
     const handleError=(error,label)=>{
         setErrors((prev)=>({...prev,[label]:error}))
@@ -213,19 +213,54 @@ export default function DisplayAllBook2()
         setBoKKNo('')
     }
 
+    const handleDelete=async(rowData)=>{
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        toast:true,
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+      }).then(async(result) => {
+        if (result.isConfirmed) {
+          var result= await postData ('employee/delete_book_data',{bookid:rowData.bookid})
+         if(result.status)
+         { Swal.fire(
+            
+             "Deleted!",
+             "Record has been deleted.",
+             "success"
+          );
+          fetchAllBook()
+        }
+      else{
+        Swal.fire(
+            
+          "Deleted!",
+          "Fail to Delete Record",
+          "success"
+       );
+      }
+      }
+      });
+
+    }
+
  const handleSubmit=async()=>{
      var error=validation()
      if(error==false)
      {
      
-    var body={sno:sno, d:D, acno:ACNO, rb:RB, author:Author,title1:Title1, title2:Title2, title3:Title3, subject1:Subject1, subject2:Subject2,edition:Edition, place:Place, publisher:Publisher, year:Year, pages:Pages,volume:Volume, source1:Source1, source2:Source2, billno:BillNo, billdt:BillDt,cost:Cost, forncost:FornCost, bokkno:BoKKNo}
+    var body={bookid:bookid,sno:sno, d:D, acno:ACNO, rb:RB, author:Author,title1:Title1, title2:Title2, title3:Title3, subject1:Subject1, subject2:Subject2,edition:Edition, place:Place, publisher:Publisher, year:Year, pages:Pages,volume:Volume, source1:Source1, source2:Source2, billno:BillNo, billdt:BillDt,cost:Cost, forncost:FornCost, bokkno:BoKKNo}
 //    var formData=new FormData()
  //    formData.append('employeecode',employeeCode) 
  //    formData.append('employeename',employeeName) 
  //    formData.append('previouspost',previousPost) 
  //    formData.append('promotedpost',promotedPost) 
  //    formData.append('promotiondate',promotionDate) 
-    var response= await postData('employee/submit_book',body)
+    var response= await postData('employee/edit_book_data',body)
     if(response.status)
     {
      Swal.fire({
@@ -235,6 +270,8 @@ export default function DisplayAllBook2()
      toast:true
      
 })
+
+fetchAllBook()
     }
     else{
      Swal.fire({
@@ -464,20 +501,7 @@ const bookForm=()=>{
                 onChange={(event)=>setBoKKNo(event.target.value)} label="Bokkno" fullWidth/>
 
                </Grid>
-               <Grid item xs={6}>
-            <Button component="label"
-               fullWidth
-               variant='contained'
-               onClick={handleSubmit}
-               >Submit</Button>
-               </Grid>
-               <Grid item xs={6}>
-            <Button component="label"
-               fullWidth
-               variant='contained'
-               onClick={handleReset}
-               >Reset</Button>
-               </Grid>
+           
              </Grid>
             </div>
              
@@ -491,6 +515,8 @@ const bookForm=()=>{
      },[])
 
      const handleOpen=(rowData)=>{
+
+      setBookid(rowData.bookid)
       setSNo(rowData.sno)
       setD(rowData.d)
       setACNO(rowData.acno)
@@ -531,6 +557,8 @@ const bookForm=()=>{
          <DialogContent>
          {bookForm()}
          </DialogContent>
+       
+         <Button onClick={handleSubmit}>Edit</Button>
          <Button onClick={handleClose}>Close</Button>
          <DialogActions>
 
@@ -638,6 +666,11 @@ const bookForm=()=>{
                 icon: 'edit',
                 tooltip: 'Save Details',
                 onClick: (event, rowData) => handleOpen(rowData)
+              },
+              {
+                icon: 'delete',
+                tooltip: 'Delete Details',
+                onClick: (event, rowData) => handleDelete(rowData)
               }
             ]}
           />
