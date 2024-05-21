@@ -8,6 +8,7 @@ import {Grid,Button,TextField} from '@mui/material';
 import Dialog from '@mui/material/Dialog';
 import Swal from "sweetalert2";
 import { DialogActions, DialogContent, DialogTitle } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 var useStyles=makeStyles({
 reportroot:{
     width:'100vw',
@@ -47,7 +48,7 @@ box:{
 
 export default function DisplayAllBook2()
 {   var classes=useStyles()
-    
+    var navigate=useNavigate()
  
  const [open,setOpen]=useState(false)
 
@@ -671,7 +672,13 @@ const bookForm=()=>{
                 icon: 'delete',
                 tooltip: 'Delete Details',
                 onClick: (event, rowData) => handleDelete(rowData)
-              }
+              },
+              {
+                icon: 'add',
+                tooltip: 'Add Books',
+                isFreeAction:true,
+                onClick: (event, rowData) => navigate('/book2')
+              },
             ]}
           />
         )
