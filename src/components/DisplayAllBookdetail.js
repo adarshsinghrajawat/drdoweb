@@ -77,6 +77,7 @@ export default function DisplayAllBookDetail()
  const[Crvno,setCrvno]=useState('')
  const [Status,setStatus]=useState('')
  const[Itemcode,setItemCode]=useState('')
+ const [bookdetailid,setBookdetailid]=useState('')
  // const [Source1,setSource1]=useState('')
  // const [Source2,setSource2]=useState('')
  // const [BillNo,setBillNo]=useState('')
@@ -299,7 +300,7 @@ export default function DisplayAllBookDetail()
         if(error==false)
         {
         
- var body={lno:lno,author:Author,title1:Title1, title2:Title2, title3:Title3,edition:Edition, place:Place, publisher:Publisher,volume:Volume, year:Year,cost:Cost, forncost:FornCost, qty:Qty,noremd:Noremd,rem:Rem,crvno:Crvno,status:Status,itemcode:Itemcode}
+ var body={bookdetailid:bookdetailid,lno:lno,author:Author,title1:Title1, title2:Title2, title3:Title3,edition:Edition, place:Place, publisher:Publisher,volume:Volume, year:Year,cost:Cost, forncost:FornCost, qty:Qty,noremd:Noremd,rem:Rem,crvno:Crvno,status:Status,itemcode:Itemcode}
     //    var formData=new FormData()
     //    formData.append('employeecode',employeeCode) 
     //    formData.append('employeename',employeeName) 
@@ -593,6 +594,7 @@ const bookdetailForm=()=>{
 
      const handleOpen=(rowData)=>{
 
+      setBookdetailid(rowData.bookdetailid)
       setLNo(rowData.lno)
       //setSNo(rowData.sno)
      // setD(rowData.d)
@@ -667,7 +669,7 @@ const bookdetailForm=()=>{
             </div>}
             columns={[
               { title: 'Lno', 
-              field: 'lno',
+              field: 'bookdetailid',
               render:(rowData)=>
                 <div>
                     <div>{rowData.bookdetailid}</div>
