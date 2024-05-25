@@ -6,6 +6,7 @@ import { DialerSip } from "@mui/icons-material";
 import { postData } from '../services/FetchNodeServices';
 import {Grid,Button,TextField} from '@mui/material';
 import Dialog from '@mui/material/Dialog';
+import Books from "../assets/books.jpg"
 import Swal from "sweetalert2";
 import { DialogActions, DialogContent, DialogTitle } from "@mui/material";
 import { useNavigate } from "react-router-dom";
@@ -548,7 +549,7 @@ const bookForm=()=>{
       setOpen(false)
      }
 
-     const showPromotionDialog=()=>{
+     const showBookDialog=()=>{
       return(
         <div>
         <Dialog open={open}>
@@ -571,7 +572,17 @@ const bookForm=()=>{
     function displayBook() {
         return (
           <MaterialTable
-            title="Book List"
+            title={ 
+               <div style={{display:'flex',flexDirection:'row'}}>
+            <div>
+                <img src={Books} width="40"/>
+
+            </div>
+            <div style={{fontFamily:'dosis',fontSize:25,fontWeight:'bold',paddingLeft:5}}>
+                Books List
+
+            </div>
+            </div>}
             columns={[
               { title: 'Book ID/Sno', 
               field: 'bookid',
@@ -688,7 +699,7 @@ const bookForm=()=>{
     <div className={classes.reportroot}>
       <div className={classes.reportbox}>
       {displayBook()}
-      {showPromotionDialog()}
+      {showBookDialog()}
       </div>
     </div>
   )

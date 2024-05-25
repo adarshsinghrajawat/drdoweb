@@ -7,6 +7,7 @@ import Book2 from './components/Book2';
 import DisplayAllBook2 from './components/DisplayAllBook2';
 import BookDetail from './components/BookDetail';
 import { Routes,Route,BrowserRouter as Router} from 'react-router-dom';
+import DisplayAllBookDetail from './components/DisplayAllBookdetail';
 function App() {
   return (
     <div className="App">
@@ -15,6 +16,7 @@ function App() {
           <Route element={<BookDetail/>} path="/bookdetail"/>
           <Route element={<Book2/>} path="/book2"/>
           <Route element={<DisplayAllBook2/>} path="/displayallbook2"/>
+          <Route element={<DisplayAllBookDetail/>} path="/displayallbookdetail"/>
       {/* <Issue/>
       <EmployeeDetails/>
       <Employee/>

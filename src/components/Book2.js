@@ -233,7 +233,7 @@ export default function Book2(){
              <Grid container spacing={3}>
 
              <Grid item xs={12}>
-                <Heading image={books} caption="Books"/>
+                <Heading image={books} caption="Books" link="/displayallbook2"/>
                 </Grid>
                <Grid item xs={4}>
                 <TextField 

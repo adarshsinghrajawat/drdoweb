@@ -2,6 +2,8 @@ import {Grid,Button,TextField} from '@mui/material';
 import { useState } from 'react';
 import { postData } from '../services/FetchNodeServices';
 import Swal from 'sweetalert2';
+import Heading from './projectComponent/Heading';
+import books from "../../src/assets/books.jpg"
 import {makeStyles} from "@mui/styles"
 var useStyles=makeStyles({
 root:{
@@ -273,6 +275,9 @@ export default function BookDetail(){
         <div className={useStyle.root}>
             <div className={useStyle.box}>
              <Grid container spacing={3}>
+             <Grid item xs={12}>
+                <Heading image={books} caption="Book Details" link="/displayallbookdetail"/>
+                </Grid>
                <Grid item xs={4}>
                 <TextField 
                 value={lno}
