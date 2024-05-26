@@ -8,6 +8,7 @@ import DisplayAllBook2 from './components/DisplayAllBook2';
 import BookDetail from './components/BookDetail';
 import { Routes,Route,BrowserRouter as Router} from 'react-router-dom';
 import DisplayAllBookDetail from './components/DisplayAllBookdetail';
+import AdminLogin from './components/AdminLogin';
 function App() {
   return (
     <div className="App">
@@ -17,6 +18,7 @@ function App() {
           <Route element={<Book2/>} path="/book2"/>
           <Route element={<DisplayAllBook2/>} path="/displayallbook2"/>
           <Route element={<DisplayAllBookDetail/>} path="/displayallbookdetail"/>
+          <Route element={<AdminLogin/>} path="/adminlogin"/>
       {/* <Issue/>
       <EmployeeDetails/>
       <Employee/>

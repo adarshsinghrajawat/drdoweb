@@ -307,7 +307,7 @@ export default function DisplayAllBookDetail()
     //    formData.append('previouspost',previousPost) 
     //    formData.append('promotedpost',promotedPost) 
     //    formData.append('promotiondate',promotionDate) 
-       var response= await postData('employee/submit_bookdetail',body)
+       var response= await postData('employee/edit_bookdetail',body)
        if(response.status)
        {
         Swal.fire({
