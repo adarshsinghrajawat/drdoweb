@@ -9,6 +9,9 @@ import BookDetail from './components/BookDetail';
 import { Routes,Route,BrowserRouter as Router} from 'react-router-dom';
 import DisplayAllBookDetail from './components/DisplayAllBookdetail';
 import AdminLogin from './components/AdminLogin';
+import Supplier from './components/Supplier';
+import DisplayAllSupplier from './components/DisplayAllSupplier';
+import DisplayAllIssue from './components/DisplayAllIssue';
 function App() {
   return (
     <div className="App">
@@ -19,6 +22,11 @@ function App() {
           <Route element={<DisplayAllBook2/>} path="/displayallbook2"/>
           <Route element={<DisplayAllBookDetail/>} path="/displayallbookdetail"/>
           <Route element={<AdminLogin/>} path="/adminlogin"/>
+          <Route element={<Supplier/>} path="/supplier"/>
+          <Route element={<DisplayAllSupplier/>} path="/displayallsupplier"/>
+          <Route element={<DisplayAllIssue/>} path="/displayallissue"/>
+          <Route element={<Issue/>} path="/issue" />
+
       {/* <Issue/>
       <EmployeeDetails/>
       <Employee/>

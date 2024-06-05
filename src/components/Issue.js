@@ -2,6 +2,8 @@ import {Grid,Button,TextField} from '@mui/material';
 import { useState } from 'react';
 import { postData } from '../services/FetchNodeServices';
 import Swal from 'sweetalert2';
+import Heading from './projectComponent/Heading';
+import books from "../../src/assets/books.jpg"
 import {makeStyles} from "@mui/styles"
 var useStyles=makeStyles({
 root:{
@@ -128,6 +130,9 @@ export default function Issue(){
     return(
         <div className={useStyle.root}>
             <div className={useStyle.box}>
+            <Grid item xs={12}>
+                        <Heading image={books} caption="Issue" link='/displayallissue' />
+                    </Grid>
              <Grid container spacing={3}>
                <Grid item xs={6}>
              

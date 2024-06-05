@@ -593,7 +593,7 @@ const bookdetailForm=()=>{
      },[])
 
      const handleOpen=(rowData)=>{
-
+      console.log("abc",rowData)
       setBookdetailid(rowData.bookdetailid)
       setLNo(rowData.lno)
       //setSNo(rowData.sno)
